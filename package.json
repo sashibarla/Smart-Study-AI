@@ -1,0 +1,12 @@
+{
+  "name": "smart-study-ai-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Smart Study AI Assistant Root Workspace Delegator",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "preview": "npm --prefix frontend run preview",
+    "install:all": "npm --prefix frontend install && pip install -r backend/requirements.txt"
+  }
+}
