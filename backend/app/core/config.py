@@ -8,7 +8,12 @@ class Settings:
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  # 7 days
 
-    BASE_DIR: Path = Path(__file__).resolve().parent.parent.parent
+    # Adapt base directory for Vercel serverless read-only filesystem
+    if os.getenv("VERCEL") or os.getenv("VERCEL_ENV"):
+        BASE_DIR: Path = Path("/tmp")
+    else:
+        BASE_DIR: Path = Path(__file__).resolve().parent.parent.parent
+
     UPLOAD_DIR: Path = BASE_DIR / "uploads"
     DB_PATH: Path = BASE_DIR / "smart_study.db"
     
