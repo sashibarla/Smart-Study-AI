@@ -28,9 +28,13 @@ app = FastAPI(
 )
 
 # CORS configuration for React frontend
+origins = [o.strip() for o in settings.ALLOWED_ORIGINS.split(",") if o.strip()]
+if not origins:
+    origins = ["*"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Allow all origins for dev/production flexibility
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

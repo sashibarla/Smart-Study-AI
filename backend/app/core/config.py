@@ -16,6 +16,10 @@ class Settings:
 
     UPLOAD_DIR: Path = BASE_DIR / "uploads"
     DB_PATH: Path = BASE_DIR / "smart_study.db"
+    DATABASE_URL: str = os.getenv("DATABASE_URL", "")
+
+    # CORS Allowed Origins (comma-separated list or *)
+    ALLOWED_ORIGINS: str = os.getenv("ALLOWED_ORIGINS", "*")
     
     # AI Providers
     GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", os.getenv("GOOGLE_API_KEY", ""))
